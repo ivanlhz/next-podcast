@@ -1,49 +1,49 @@
 import styled from "styled-components";
 
-export const ContainerStyled = styled.div `
+export const ContainerStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 
-export const PodcastCardStyled = styled.div `
+export const PodcastCardStyled = styled.div`
   width: 200px;
   margin: 10px;
   padding: 10px;
-  border: 1px solid #CCC;
-  border-radius:5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   cursor: pointer;
 `;
 
-export const SideBarStyled = styled.div `
+export const SideBarStyled = styled.div`
   width: 200px;
   padding: 10px;
 `;
 
-export const PodcastImageStyled = styled.img `
+export const PodcastImageStyled = styled.img`
   width: 100%;
   border-radius: 5px;
 `;
 
-export const PodcastTitleStyled = styled.h2 `
+export const PodcastTitleStyled = styled.h2`
   margin-top: 10px;
 `;
 
-export const PodcastAuthorStyled = styled.p `
+export const PodcastAuthorStyled = styled.p`
   font-size: 14px;
   font-weight: bold;
 `;
 
-export const PodcastDescriptionStyled = styled.p `
+export const PodcastDescriptionStyled = styled.p`
   margin-top: 20px;
 `;
 
-export const EpisodesListStyled = styled.ul `
+export const EpisodesListStyled = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
 `;
 
-export const EpisodeItemStyled = styled.li `
+export const EpisodeItemStyled = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,4 +52,17 @@ export const EpisodeItemStyled = styled.li `
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
+`;
+export const EpisodeTitleStyled = styled.p`
+  font-weight: bold;
+`;
+
+export const EpisodeDateStyled = styled.p`
+  font-size: 0.8rem;
+  margin-top: 5px;
+`;
+
+export const EpisodeDurationStyled = styled.p`
+  font-size: 0.8rem;
+  margin-top: 5px;
 `;

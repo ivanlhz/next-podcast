@@ -9,7 +9,12 @@ export const ItunesAppleApiService = {
     return response.data;
   },
 
-  getPodcast: async (id) => {
+  getPodcastDetailsById: async (id) => {
+    const response = await ItunesAppleApiService.getPodcastList()
+    return response.feed.entry.find(p => p.id.attributes["im:id"] === id);
+  },
+
+  getEpisodesByPodcastId: async (id) => {
     const response = await axios.get(
       baseURL +
         `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode`

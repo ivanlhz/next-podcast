@@ -1,5 +1,5 @@
 export const ItunesAppleApiAdapter = {
-  formatPodcastInfo: (podcast) => {
+  formatPodcastListPodcast: (podcast) => {
     return {
       id: podcast.id.attributes["im:id"],
       title: podcast.title.label,
@@ -8,13 +8,15 @@ export const ItunesAppleApiAdapter = {
       artist: podcast["im:artist"].label,
     };
   },
-
+  
   formatPodcastEpisode: (episode) => {
     return {
       id: episode.trackId,
       title: episode.trackName,
       date: new Date(episode.releaseDate).toLocaleString(),
       duration: miliToMinutesAndSeconds(episode.trackTimeMillis),
+      episodeURL: episode.episodeUrl,
+      description: episode.description
     };
   },
 };

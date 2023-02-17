@@ -15,10 +15,11 @@ import { usePodcastInfo } from "@/hooks/usePodcastInfo";
 
 import { ItunesAppleApiAdapter } from "@/adapters/itunesAppleApiAdapter";
 import { ItunesAppleApiService } from "@/services/itunesAppleApiService";
+import Link from "next/link";
 
 export default function Podcast() {
   const router = useRouter();
-  const id = router.query.id;
+  const id = router.query.podcastId;
   const { podcast, episodes } = usePodcastInfo({
     id,
     service: ItunesAppleApiService,
@@ -34,26 +35,31 @@ export default function Podcast() {
       <div>
         <SideBarStyled>
           <PodcastImageStyled
-            src={podcast.artworkUrl600}
-            alt={podcast.collectionName}
+            src={podcast.imageURL}
+            alt={podcast.title}
           />
-          <PodcastTitleStyled>{podcast.collectionName}</PodcastTitleStyled>
-          <PodcastAuthorStyled>{podcast.artistName}</PodcastAuthorStyled>
+          <PodcastTitleStyled>{podcast.title}</PodcastTitleStyled>
+          <PodcastAuthorStyled>{podcast.artist}</PodcastAuthorStyled>
           <PodcastDescriptionStyled>
-            {podcast.collectionName}
+            {podcast.description}
           </PodcastDescriptionStyled>
         </SideBarStyled>
         <div>
           <h3>{episodes.length} Episodes</h3>
           <EpisodesListStyled>
             {episodes.map((episode) => (
-              <EpisodeItemStyled key={episode.id}>
-                <EpisodeTitleStyled>{episode.title}</EpisodeTitleStyled>
-                <EpisodeDateStyled>{episode.date}</EpisodeDateStyled>
-                <EpisodeDurationStyled>
-                  {episode.duration}
-                </EpisodeDurationStyled>
-              </EpisodeItemStyled>
+              <Link
+                key={episode.id}
+                href={`${router.asPath}/episode/${episode.id}`}
+              >
+                <EpisodeItemStyled>
+                  <EpisodeTitleStyled>{episode.title}</EpisodeTitleStyled>
+                  <EpisodeDateStyled>{episode.date}</EpisodeDateStyled>
+                  <EpisodeDurationStyled>
+                    {episode.duration}
+                  </EpisodeDurationStyled>
+                </EpisodeItemStyled>
+              </Link>
             ))}
           </EpisodesListStyled>
         </div>

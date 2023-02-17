@@ -10,7 +10,7 @@ export const usePodcastList = ({
       const response = await service.getPodcastList();
       setPodcasts(
         response.feed.entry.map((podcast) =>
-        adapter.formatPodcastInfo(podcast)
+        adapter.formatPodcastListPodcast(podcast)
         )
       );
     };

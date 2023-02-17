@@ -66,3 +66,22 @@ export const EpisodeDurationStyled = styled.p`
   font-size: 0.8rem;
   margin-top: 5px;
 `;
+
+export const AudioPlayerStyled = styled.audio`
+  width: 100%;
+`;
+
+export const EpisodeDetailsTitleStyled = styled.h1`
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+`;
+
+export const EpisodeDetailsDescriptionStyled = styled.div`
+  margin-bottom: 32px;
+`;
+
+export const MainSectionStyled = styled.div`
+width: 75%;
+padding: 16px;
+`;

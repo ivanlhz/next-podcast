@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ContainerStyled, PodcastCardStyled } from '@/components/styled'
 import Image from 'next/image'
 import { usePodcastList } from '@/hooks/usePodcastList'
-import { ItunesAppleApiService } from '@/services/itunesAppleApiService'
+import { ItunesAppleApiService } from '@/services/ItunesAppleApiService'
 
 const service = new ItunesAppleApiService()
 

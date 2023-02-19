@@ -1,3 +1,4 @@
+import { ItunesAppleApiAdapter } from '@/adapters/itunesAppleApiAdapter'
 import { EpisodeDTO, PodcastDTO } from '@/services/appleApiServiceTypes'
 
 export const PODCAST_LIST_RESPONSE: PodcastDTO[] = [
@@ -83,6 +84,9 @@ export const PODCAST_LIST_RESPONSE: PodcastDTO[] = [
     }
   }
 ]
+export const PODCAST_LIST_FORMATTED = PODCAST_LIST_RESPONSE.map((res) =>
+  ItunesAppleApiAdapter.formatPodcastListPodcast(res)
+)
 
 export const EPISODE_LIST_RESPONSE: EpisodeDTO[] = [
   {
@@ -113,3 +117,6 @@ export const EPISODE_LIST_RESPONSE: EpisodeDTO[] = [
     description: `Happy Friday Nieces & Nephews!\n\nThis week,  Bridget Kelly and Mandii B are joined by musician, podcaster, and friends with benefits  Kevin AntoiniYo for a special Freshly Squeezed episode. \n\nThe three have some Grown (8:40 ) , Honest (33:00), & Slightly…scratch that…Extremely Toxic (58:00) conversations  while discussing Kevin’s new project “Maybe Next Summer”.\n\nTopics: Can you really date multiple people at the same time? (14:00) STD  stands for Sexually Transmitted DEMONS (15:00)Is ghosting self care or emotional immaturity ? (17:00)  Kevin explains why he would prefer being lied to (25:00)How therapy has helped Kehlani discover that she was a lesbian (36:00)The different personality types of a people leader who is also responsible for managing and growing a business (48:00)Is the word “impressionable” just code for… easily manipulated (58:00) How early is too early to say “I love you”  (1:20:00)—----------------\n\nLIVE SHOW:\n\n🎉Our live show tickets are on sale NOW! Go to www.seethethingispodcast.com to get your tickets or click on the links below.🎉\n\nThursday, March 2nd- LA \n\nFriday, March 17th- ATL \n\nSaturday, March 25th- PHILI \n\nSunday, March 26th- D.C. \n\nFriday March 31st- NYC \n\n—----------------\n\nLINKS:\n\n🗝PATREON\n\n🎥YOUTUBE \n\n💻 WEBSITE\n\n🎙ADVERTISE WITH US ON GUMBALL \n\nSee Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.`
   }
 ]
+export const EPISODE_LIST_FORMATTED = EPISODE_LIST_RESPONSE.map((res) =>
+  ItunesAppleApiAdapter.formatPodcastEpisode(res)
+)

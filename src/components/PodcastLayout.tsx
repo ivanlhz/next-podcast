@@ -1,5 +1,4 @@
 import { EpisodeEntity } from '@/core/EpisodeEntity'
-import { PodcastEntity } from '@/core/PodcastEntity'
 import { usePodcastInfo } from '@/hooks/usePodcastInfo'
 import { ItunesAppleApiService } from '@/services/ItunesAppleApiService'
 import { NextRouter, useRouter } from 'next/dist/client/router'
@@ -22,9 +21,9 @@ interface PodcastLayoutProps {
 function PodcastLayout({ children }: PodcastLayoutProps) {
   const router = useRouter()
   const episodeId = router.query['episodeId'] as string
-  const id = router.query['podcastId'] as string
+  const podcastId = router.query['podcastId'] as string
   const { podcast, episodes } = usePodcastInfo({
-    id,
+    podcastId,
     service
   })
 

@@ -1,7 +1,12 @@
 import { ItunesAppleApiAdapter } from '@/adapters/itunesAppleApiAdapter'
 import { ItunesAppleApiService } from '@/services/ItunesAppleApiService'
 import axios from 'axios'
-import { EPISODE_LIST_RESPONSE, PODCAST_LIST_RESPONSE } from './fixtures'
+import {
+  EPISODE_LIST_FORMATTED,
+  EPISODE_LIST_RESPONSE,
+  PODCAST_LIST_FORMATTED,
+  PODCAST_LIST_RESPONSE
+} from './fixtures'
 
 describe('AppleApiService', () => {
   const service = new ItunesAppleApiService()
@@ -15,9 +20,7 @@ describe('AppleApiService', () => {
       .mockImplementation(() =>
         Promise.resolve({ data: { feed: { entry: PODCAST_LIST_RESPONSE } } })
       )
-    const expected = PODCAST_LIST_RESPONSE.map((res) =>
-      ItunesAppleApiAdapter.formatPodcastListPodcast(res)
-    )
+    const expected = PODCAST_LIST_FORMATTED
     const response = await service.getPodcastList()
     expect(mockedAxios).toBeCalledTimes(1)
     expect(response).toEqual(expected)
@@ -29,7 +32,7 @@ describe('AppleApiService', () => {
       .mockImplementation(() =>
         Promise.resolve({ data: { feed: { entry: PODCAST_LIST_RESPONSE } } })
       )
-    const expected = ItunesAppleApiAdapter.formatPodcastListPodcast(PODCAST_LIST_RESPONSE[1])
+    const expected = PODCAST_LIST_FORMATTED[1]
 
     const response = await service.getPodcastDetailsById('456')
     expect(response).toEqual(expected)
@@ -52,9 +55,7 @@ describe('AppleApiService', () => {
     const mockedAxios = jest
       .spyOn(axios, 'get')
       .mockImplementation(() => Promise.resolve({ data: { results: EPISODE_LIST_RESPONSE } }))
-    const expected = EPISODE_LIST_RESPONSE.map((res) =>
-      ItunesAppleApiAdapter.formatPodcastEpisode(res)
-    )
+    const expected = EPISODE_LIST_FORMATTED
     const response = await service.getEpisodesByPodcastId('test')
     expect(mockedAxios).toBeCalledTimes(1)
     expect(mockedAxios).toBeCalledWith(

@@ -4,7 +4,7 @@ import { PodcastRepository } from '@/core/PodcastRepository.interface'
 import { useEffect, useState } from 'react'
 
 interface UsePodcastInfoProps {
-  id: string
+  podcastId?: string
   service: PodcastRepository
 }
 
@@ -13,26 +13,26 @@ interface State {
   episodes?: EpisodeEntity[]
 }
 
-export const usePodcastInfo = ({ id, service }: UsePodcastInfoProps) => {
+export const usePodcastInfo = ({ podcastId, service }: UsePodcastInfoProps) => {
   const [state, setState] = useState<State>({ podcast: undefined, episodes: [] })
 
   useEffect(() => {
-    const getData = async () => {
+    const getData = async (id: string) => {
       const response = await Promise.all([
         service.getPodcastDetailsById(id),
         service.getEpisodesByPodcastId(id)
       ])
       const podcast = { ...response[0] }
-      const episodes = response[1].slice(1)
+      const episodes = response[1].slice(1) // The first one is the podcast info
       setState({
         podcast,
         episodes
       })
     }
-    if (id) {
-      getData()
+    if (podcastId) {
+      getData(podcastId)
     }
-  }, [id, service])
+  }, [podcastId, service])
 
   return {
     ...state

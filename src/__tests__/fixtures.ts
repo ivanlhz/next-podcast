@@ -39,6 +39,12 @@ export const PODCAST_LIST_RESPONSE: PodcastDTO[] = [
     },
     'im:image': [
       {
+        label: 'dummyimage'
+      },
+      {
+        label: 'dummyimage1'
+      },
+      {
         label: 'dummyimage2'
       }
     ],
@@ -60,7 +66,13 @@ export const PODCAST_LIST_RESPONSE: PodcastDTO[] = [
     },
     'im:image': [
       {
-        label: 'dummyimage3'
+        label: 'dummyimage'
+      },
+      {
+        label: 'dummyimage1'
+      },
+      {
+        label: 'dummyimage2'
       }
     ],
     summary: {

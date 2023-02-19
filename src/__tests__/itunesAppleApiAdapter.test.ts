@@ -23,7 +23,7 @@ describe('itunesAppleApiAdapter', () => {
       episodeURL: EPISODE_LIST_RESPONSE[0].episodeUrl,
       description: EPISODE_LIST_RESPONSE[0].description,
       duration: '01:21:42',
-      date: '17/2/2023'
+      date: '17/02/2023'
     }
     expect(result).toEqual(expected)
   })

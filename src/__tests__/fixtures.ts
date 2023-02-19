@@ -13,13 +13,13 @@ export const PODCAST_LIST_RESPONSE: PodcastDTO[] = [
     },
     'im:image': [
       {
-        label: 'dummyimage'
+        label: '/dummyimage.jpg'
       },
       {
-        label: 'dummyimage1'
+        label: '/dummyimage1.jpg'
       },
       {
-        label: 'dummyimage2'
+        label: '/dummyimage2.jpg'
       }
     ],
     summary: {
@@ -40,13 +40,13 @@ export const PODCAST_LIST_RESPONSE: PodcastDTO[] = [
     },
     'im:image': [
       {
-        label: 'dummyimage'
+        label: '/dummyimage.jpg'
       },
       {
-        label: 'dummyimage1'
+        label: '/dummyimage1.jpg'
       },
       {
-        label: 'dummyimage2'
+        label: '/dummyimage2.jpg'
       }
     ],
     summary: {
@@ -67,13 +67,13 @@ export const PODCAST_LIST_RESPONSE: PodcastDTO[] = [
     },
     'im:image': [
       {
-        label: 'dummyimage'
+        label: '/dummyimage.jpg'
       },
       {
-        label: 'dummyimage1'
+        label: '/dummyimage1.jpg'
       },
       {
-        label: 'dummyimage2'
+        label: '/dummyimage2.jpg'
       }
     ],
     summary: {

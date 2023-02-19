@@ -19,20 +19,26 @@ interface PodcastLayoutProps {
   isFallback?: boolean
 }
 
-function PodcastLayout({ children, episodeId, podcastId, isFallback = true }: PodcastLayoutProps) {
+function PodcastLayout({
+  children,
+  episodeId,
+  podcastId,
+  isFallback = true,
+  ...props
+}: PodcastLayoutProps) {
   const { podcast, episodes } = usePodcastInfo({
     podcastId,
     service
   })
-  console.log(podcast, episodes)
+
   const episode = episodes?.length ? episodes.find((p) => p.id === episodeId) : undefined
 
   if (isFallback || !podcast) {
-    return <div>Loading...</div>
+    return <div {...props}>Loading...</div>
   }
 
   return (
-    <ContainerStyled>
+    <ContainerStyled {...props}>
       <Sidebar podcast={podcast} />
       <MainSectionStyled>{children({ episode, episodes })}</MainSectionStyled>
     </ContainerStyled>

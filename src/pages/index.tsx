@@ -28,7 +28,7 @@ export default function Home() {
       <input type='text' placeholder='Filter podcasts' onChange={handleFilterChange} />
       <ContainerStyled>
         {filteredPodcasts.map((podcast) => (
-          <Link href={`/podcast/${podcast.id}`} key={podcast.id}>
+          <Link data-testid='link' href={`/podcast/${podcast.id}`} key={podcast.id}>
             <PodcastCardStyled>
               <Image width={170} height={170} src={podcast.imageURL} alt={podcast.title} />
               <h3>{podcast.title}</h3>

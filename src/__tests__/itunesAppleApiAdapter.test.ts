@@ -9,7 +9,7 @@ describe('itunesAppleApiAdapter', () => {
     const expected: PodcastEntity = {
       id: '123',
       title: 'uno',
-      imageURL: 'dummyimage2',
+      imageURL: '/dummyimage2.jpg',
       description: 'lorem itsum 1',
       artist: 'Goku'
     }

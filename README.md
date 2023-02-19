@@ -1,5 +1,29 @@
+## About the project
+This project gets the podcast trends from itunes and allow to the user to browse and play the episodes.
+
+There is not paginations so only displays the fist page of each results.
+## About Frameworks and libraries
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+For the style I use style-components and in the next steps I will add ChakraUI.
+
+Jest and Testing library to unit and integration tests.
+
+TS, ESLINT and prettier for the code formatter
+
+## About architecture
+In project I implement my own version of clean architecure for frontend to remove the boilerplate code that is very common in this kind of project architecture. 
+
+From more external layer into deeper one we have:
+- **Presentation Layer** - UI: Here we have the pages and components that consume use cases. Folders `src/pages` and `src/components`
+- **Presentation Layer - Adapters**: I don't use any pattern here but we could do I we like to control the state changes. 
+- **Data Layer**: Here I create the repository implementations and to do it less boilerplate calling the adapter after the request. It make the adapters acopled to the services(repositories) but I think it is totally logic because the main goal is transform the services response into a more readable response.
+- **Domain Layer**: Here I use custom hooks to reprenset the useCases, folder `src/hooks`. On the other hand I create the `src/adapters` folder to create the services adapters. Here I use the adapters as a json object that implements all methods that is needed to run the service that it addapt. 
+
+Also I create the `core` folder where I put the **entities**, the r**epositories interfaces** and **adapters interfaces**.
+
+## About CORS
+In order to allow CORS requests, I use an external service, https://github.com/Rob--W/cors-anywhere. All request URLs are mounted using this service, If you have errors and the podcast data is not displayed rightly, may you need to request access to the demo throw the url https://cors-anywhere.herokuapp.com/corsdemo.
 ## Getting Started
 
 First, run the development server:
@@ -14,25 +38,22 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Other commands
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Run unit test
+```bash
+npm run test
+# or
+yarn test
+# or
+pnpm test
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Test with coverage
+```bash
+npm run test:coverage
+# or
+yarn test:coverage
+# or
+pnpm test:coverage
+```

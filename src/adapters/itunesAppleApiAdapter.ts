@@ -23,7 +23,7 @@ export const ItunesAppleApiAdapter: PodcastAdapter<
     return {
       id: episode.trackId.toString(),
       title: episode.trackName,
-      date: new Date(episode.releaseDate).toLocaleString(),
+      date: getDateFormatted(new Date(episode.releaseDate)),
       duration: miliToMinutesAndSeconds(episode.trackTimeMillis),
       episodeURL: episode.episodeUrl,
       description: episode.description
@@ -31,9 +31,20 @@ export const ItunesAppleApiAdapter: PodcastAdapter<
   }
 }
 
-const miliToMinutesAndSeconds = (miliseconds: number) => {
-  const minutes: number = miliseconds / 1000 / 60
-  miliseconds -= minutes * 60 * 1000
-  const seconds = miliseconds / 1000
-  return `${minutes}:${seconds}`
+const miliToMinutesAndSeconds = (ms: number) => {
+  return new Date(ms).toISOString().slice(11, 19)
+}
+
+const getDateFormatted = (inputDate: Date): string => {
+  let date, month, year
+
+  date = inputDate.getDate()
+  month = inputDate.getMonth() + 1
+  year = inputDate.getFullYear()
+
+  date = date.toString().padStart(2, '0')
+
+  month = month.toString().padStart(2, '0')
+
+  return `${date}/${month}/${year}`
 }

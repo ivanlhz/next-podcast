@@ -1,5 +1,5 @@
 export type EpisodeDTO = {
-  trackId: string
+  trackId: number
   trackName: string
   releaseDate: string
   trackTimeMillis: number

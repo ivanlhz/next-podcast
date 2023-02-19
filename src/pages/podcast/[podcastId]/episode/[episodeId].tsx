@@ -4,10 +4,14 @@ import {
   EpisodeDetailsDescriptionStyled
 } from '@/components/styled'
 import PodcastLayout from '@/components/PodcastLayout'
+import { useRouter } from 'next/router'
 
 export default function Episode() {
+  const router = useRouter()
+  const episodeId = router.query['episodeId'] as string
+  const podcastId = router.query['podcastId'] as string
   return (
-    <PodcastLayout>
+    <PodcastLayout episodeId={episodeId} podcastId={podcastId} isFallback={router.isFallback}>
       {({ episode }) => {
         return episode ? (
           <>

@@ -1,7 +1,6 @@
 import { EpisodeEntity } from '@/core/EpisodeEntity'
 import { usePodcastInfo } from '@/hooks/usePodcastInfo'
 import { ItunesAppleApiService } from '@/services/ItunesAppleApiService'
-import { NextRouter, useRouter } from 'next/dist/client/router'
 import React from 'react'
 import Sidebar from './Sidebar'
 import { ContainerStyled, MainSectionStyled } from './styled'
@@ -11,32 +10,31 @@ const service = new ItunesAppleApiService()
 type ChildrenProps = {
   episode?: EpisodeEntity
   episodes?: EpisodeEntity[]
-  router: NextRouter
 }
 
 interface PodcastLayoutProps {
   children: (props: ChildrenProps) => React.ReactElement | null
+  episodeId: string
+  podcastId: string
+  isFallback?: boolean
 }
 
-function PodcastLayout({ children }: PodcastLayoutProps) {
-  const router = useRouter()
-  const episodeId = router.query['episodeId'] as string
-  const podcastId = router.query['podcastId'] as string
+function PodcastLayout({ children, episodeId, podcastId, isFallback = true }: PodcastLayoutProps) {
   const { podcast, episodes } = usePodcastInfo({
     podcastId,
     service
   })
-
+  console.log(podcast, episodes)
   const episode = episodes?.length ? episodes.find((p) => p.id === episodeId) : undefined
 
-  if (router.isFallback || !podcast) {
+  if (isFallback || !podcast) {
     return <div>Loading...</div>
   }
 
   return (
     <ContainerStyled>
       <Sidebar podcast={podcast} />
-      <MainSectionStyled>{children({ episode, episodes, router })}</MainSectionStyled>
+      <MainSectionStyled>{children({ episode, episodes })}</MainSectionStyled>
     </ContainerStyled>
   )
 }

@@ -24,11 +24,13 @@ export const usePodcastInfo = ({ podcastId, service }: UsePodcastInfoProps) => {
       ])
       const podcast = { ...response[0] }
       const episodes = response[1].slice(1) // The first one is the podcast info
+
       setState({
         podcast,
         episodes
       })
     }
+
     if (podcastId) {
       getData(podcastId)
     }

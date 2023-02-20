@@ -1,9 +1,10 @@
 import { EpisodeEntity } from '@/core/EpisodeEntity'
 import { usePodcastInfo } from '@/hooks/usePodcastInfo'
 import { ItunesAppleApiService } from '@/services/ItunesAppleApiService'
+import { Flex, Heading, Divider, Box, Grid } from '@chakra-ui/react'
+import Link from 'next/link'
 import React from 'react'
 import Sidebar from './Sidebar'
-import { ContainerStyled, MainSectionStyled } from './styled'
 
 const service = new ItunesAppleApiService()
 
@@ -38,10 +39,16 @@ function PodcastLayout({
   }
 
   return (
-    <ContainerStyled {...props}>
-      <Sidebar podcast={podcast} />
-      <MainSectionStyled>{children({ episode, episodes })}</MainSectionStyled>
-    </ContainerStyled>
+    <Flex minHeight='100vh' flexDirection='column' padding={20} {...props}>
+      <Heading color='blue.600'>
+        <Link href='/'>Podcaster</Link>
+      </Heading>
+      <Divider color={'blue'} size='xl' my='4' />
+      <Grid templateColumns='30% 70%' gap='24px'>
+        <Sidebar podcast={podcast} />
+        <Box>{children({ episode, episodes })}</Box>
+      </Grid>
+    </Flex>
   )
 }
 

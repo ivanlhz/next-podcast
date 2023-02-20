@@ -19,11 +19,6 @@ export const SideBarStyled = styled.div`
   padding: 10px;
 `
 
-export const PodcastImageStyled = styled.img`
-  width: 100%;
-  border-radius: 5px;
-`
-
 export const PodcastTitleStyled = styled.h2`
   margin-top: 10px;
 `

@@ -1,14 +1,19 @@
 import { EpisodeEntity } from '@/core/EpisodeEntity'
-import Link from 'next/link'
-import router from 'next/router'
-import React from 'react'
 import {
-  EpisodesListStyled,
-  EpisodeItemStyled,
-  EpisodeTitleStyled,
-  EpisodeDateStyled,
-  EpisodeDurationStyled
-} from './styled'
+  Card,
+  CardBody,
+  Heading,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  VStack
+} from '@chakra-ui/react'
+import Link from 'next/link'
+import React from 'react'
 
 type EpisodeListProps = {
   episodes?: EpisodeEntity[]
@@ -20,20 +25,39 @@ function EpisodeList({ episodes, routerPath }: EpisodeListProps) {
     return <h2>There is no episodes</h2>
   }
   return (
-    <>
-      <h3>{episodes?.length} Episodes</h3>
-      <EpisodesListStyled>
-        {episodes?.map((episode) => (
-          <Link key={episode.id} href={`${routerPath}/episode/${episode.id}`}>
-            <EpisodeItemStyled>
-              <EpisodeTitleStyled>{episode.title}</EpisodeTitleStyled>
-              <EpisodeDateStyled>{episode.date}</EpisodeDateStyled>
-              <EpisodeDurationStyled>{episode.duration}</EpisodeDurationStyled>
-            </EpisodeItemStyled>
-          </Link>
-        ))}
-      </EpisodesListStyled>
-    </>
+    <VStack spacing={4} m='0'>
+      <Card width='full'>
+        <CardBody>
+          <Heading size='md'>Episodes: {episodes?.length}</Heading>
+        </CardBody>
+      </Card>
+      <Card width='full'>
+        <CardBody>
+          <TableContainer>
+            <Table variant='simple'>
+              <Thead>
+                <Tr>
+                  <Th>Title</Th>
+                  <Th>Date</Th>
+                  <Th>Duration</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {episodes?.map((episode) => (
+                  <Tr key={episode.id}>
+                    <Td color='blue.400'>
+                      <Link href={`${routerPath}/episode/${episode.id}`}>{episode.title}</Link>
+                    </Td>
+                    <Td>{episode.date}</Td>
+                    <Td>{episode.duration}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </TableContainer>
+        </CardBody>
+      </Card>
+    </VStack>
   )
 }
 

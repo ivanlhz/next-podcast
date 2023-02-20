@@ -11,6 +11,9 @@ Jest and Testing library to unit and integration tests.
 
 TS, ESLINT and prettier for the code formatter
 
+## About Localstorage cahce
+I implement the fist aproach to cache the api response data into the localstorage for 1 day, but because of time I could not refactor and test it.
+
 ## About architecture
 In project I implement my own version of clean architecure for frontend to remove the boilerplate code that is very common in this kind of project architecture. 
 

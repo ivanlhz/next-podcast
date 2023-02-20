@@ -1,10 +1,6 @@
 import { EpisodeEntity } from '@/core/EpisodeEntity'
+import { Card, CardBody, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
-import {
-  EpisodeDetailsTitleStyled,
-  EpisodeDetailsDescriptionStyled,
-  AudioPlayerStyled
-} from './styled'
 
 type EpisodeProps = {
   data: EpisodeEntity
@@ -12,14 +8,15 @@ type EpisodeProps = {
 
 function Episode({ data }: EpisodeProps) {
   return (
-    <>
-      <EpisodeDetailsTitleStyled>{data.title}</EpisodeDetailsTitleStyled>
-      <EpisodeDetailsDescriptionStyled
-        className='prose'
-        dangerouslySetInnerHTML={{ __html: data.description }}
-      />
-      <AudioPlayerStyled src={data.episodeURL} controls />
-    </>
+    <Card>
+      <CardBody>
+        <Heading mb={'24px'} size='lg'>
+          {data.title}
+        </Heading>
+        <Text mb={'24px'} dangerouslySetInnerHTML={{ __html: data.description }} />
+        <audio src={data.episodeURL} controls />
+      </CardBody>
+    </Card>
   )
 }
 

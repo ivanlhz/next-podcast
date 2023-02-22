@@ -1,5 +1,5 @@
 import { ItunesAppleApiAdapter } from '@/adapters/itunesAppleApiAdapter'
-import { ItunesAppleApiService } from '@/services/ItunesAppleApiService'
+import { ItunesAppleApiService } from '@/services/itunesAppleApiService'
 import axios from 'axios'
 import {
   EPISODE_LIST_FORMATTED,

@@ -1,6 +1,6 @@
 import { EpisodeEntity } from '@/core/EpisodeEntity'
 import { usePodcastInfo } from '@/hooks/usePodcastInfo'
-import { ItunesAppleApiService } from '@/services/ItunesAppleApiService'
+import { ItunesAppleApiService } from '@/services/itunesAppleApiService'
 import { Flex, Heading, Divider, Box, Grid } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'

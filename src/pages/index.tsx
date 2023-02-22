@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react'
 import Link from 'next/link'
 //import Image from 'next/image'
 import { usePodcastList } from '@/hooks/usePodcastList'
-import { ItunesAppleApiService } from '@/services/ItunesAppleApiService'
+import { ItunesAppleApiService } from '@/services/itunesAppleApiService'
 import {
   Card,
   CardBody,

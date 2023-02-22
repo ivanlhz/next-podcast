@@ -11,7 +11,7 @@ Jest and Testing library to unit and integration tests.
 
 TS, ESLINT and prettier for the code formatter
 
-## About Localstorage cahce
+## About Localstorage cache
 I implement the fist aproach to cache the api response data into the localstorage for 1 day, but because of time I could not refactor and test it.
 
 ## About architecture
@@ -26,7 +26,7 @@ From more external layer into deeper one we have:
 Also I create the `core` folder where I put the **entities**, the r**epositories interfaces** and **adapters interfaces**.
 
 ## About CORS
-In order to allow CORS requests, I use an external service, https://github.com/Rob--W/cors-anywhere. All request URLs are mounted using this service, If you have errors and the podcast data is not displayed rightly, may you need to request access to the demo throw the url https://cors-anywhere.herokuapp.com/corsdemo.
+~~In order to allow CORS requests, I use an external service, https://github.com/Rob--W/cors-anywhere. All request URLs are mounted using this service, If you have errors and the podcast data is not displayed rightly, may you need to request access to the demo throw the url https://cors-anywhere.herokuapp.com/corsdemo.~~ (FIXED)
 ## Getting Started
 
 First, run the development server:
